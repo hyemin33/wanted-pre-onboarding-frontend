@@ -23,6 +23,5 @@ const ButtonArea = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
 `;
 export default Root;

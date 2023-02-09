@@ -2,21 +2,29 @@ import styled from "@emotion/styled";
 import React from "react";
 
 const Button = ({ onClick, text, type, ...props }) => {
-  return <ButtonWra onClick={onClick}>{text}</ButtonWra>;
+  return (
+    <ButtonWra onClick={onClick} {...props}>
+      {text}
+    </ButtonWra>
+  );
 };
 
 const ButtonWra = styled.button`
-  width: auto;
+  width: 100%;
   height: 40px;
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 4px;
-  background: #fff;
   cursor: pointer;
-  color: #8f47e6;
+  background: #505050;
+  color: #fff;
   font-weight: bold;
 
   &:last-of-type {
     margin-top: 10px;
+  }
+
+  &:disabled {
+    background: #bbb;
   }
 `;
 export default Button;
