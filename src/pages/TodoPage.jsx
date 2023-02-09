@@ -1,12 +1,18 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { api } from "../api/api";
+import auth from "../api/auth";
+
 import Button from "../components/Button";
 import Input from "../components/Input";
 import ServiceWrapper from "../components/layout/ServiceWrapper";
 import TodoItem from "../components/TodoItem";
 
 const TodoPage = () => {
+  const navigate = useNavigate();
+
   const [addTodo, setAddTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
 
@@ -23,8 +29,13 @@ const TodoPage = () => {
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    if (auth.getToken()) {
+      getData();
+    } else {
+      //토큰없으면 signin로 리다이렉트
+      navigate("/signin");
+    }
+  }, [auth]);
 
   //todo 추가하기
   const handleTodo = async () => {

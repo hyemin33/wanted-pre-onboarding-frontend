@@ -5,5 +5,8 @@ const auth = {
   getToken() {
     return localStorage.getItem("token");
   },
+  clearAll() {
+    return localStorage.clear();
+  },
 };
 export default auth;
