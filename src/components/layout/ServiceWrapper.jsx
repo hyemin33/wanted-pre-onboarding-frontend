@@ -47,7 +47,6 @@ const Body = styled.div`
   margin: auto;
   max-width: 700px;
   min-height: calc(100vh - 101px - 36px);
-  background: red;
 `;
 
 const WrapperContainer = styled.div`
