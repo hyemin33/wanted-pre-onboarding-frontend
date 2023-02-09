@@ -54,13 +54,18 @@ const TodoPage = () => {
     <ServiceWrapper>
       <h3>Todo 추가</h3>
       <Input
+        data-testid="new-todo-input"
         placeholder="todo를 입력해주세요."
         value={addTodo}
         onChange={(e) => {
           setAddTodo(e.target.value.trim());
         }}
       />
-      <Button text="추가" onClick={handleTodo} />
+      <Button
+        data-testid="new-todo-add-button"
+        text="추가"
+        onClick={handleTodo}
+      />
       <Hr />
 
       <h3>Todo 수정/삭제</h3>
