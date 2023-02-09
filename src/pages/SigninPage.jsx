@@ -26,6 +26,7 @@ const SigninPage = () => {
     <ServiceWrapper>
       <h3>로그인</h3>
       <Input
+        data-testid="email-input"
         label="이메일"
         placeholder="이메일을 입력해주세요."
         value={email}
@@ -34,6 +35,7 @@ const SigninPage = () => {
         }}
       />
       <Input
+        data-testid="password-input"
         label="패스워드"
         placeholder="패스워드를 입력해주세요."
         isPw={true}
@@ -41,6 +43,7 @@ const SigninPage = () => {
         onChange={(e) => setPassword(e.target.value.trim())}
       />
       <Button
+        data-testid="signin-button"
         text="로그인"
         disabled={!email || !password}
         onClick={handleLogin}
