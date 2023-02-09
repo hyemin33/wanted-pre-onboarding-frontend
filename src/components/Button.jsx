@@ -19,12 +19,24 @@ const ButtonWra = styled.button`
   color: #fff;
   font-weight: bold;
 
-  &:last-of-type {
-    margin-top: 10px;
-  }
-
   &:disabled {
     background: #bbb;
+  }
+
+  &.delete {
+    background: none;
+    border: 1px solid #dd3333;
+    color: #dd3333;
+    margin-left: 10px;
+    width: 100px;
+  }
+
+  &.update {
+    background: none;
+    border: 1px solid #333;
+    color: #333;
+    margin-left: 10px;
+    width: 100px;
   }
 `;
 export default Button;

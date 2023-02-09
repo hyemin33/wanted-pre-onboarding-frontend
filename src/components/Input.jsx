@@ -4,7 +4,7 @@ import React from "react";
 const Input = ({ label, isPw = false, ...props }) => {
   return (
     <InputArea>
-      <LabelText>{label}</LabelText>
+      {label && <LabelText>{label}</LabelText>}
       <StyledInput {...props} type={isPw ? "password" : "text"} />
     </InputArea>
   );
@@ -32,5 +32,6 @@ const InputArea = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  width: 100%;
 `;
 export default Input;

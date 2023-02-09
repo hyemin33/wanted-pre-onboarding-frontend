@@ -23,5 +23,9 @@ const ButtonArea = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  & :last-of-type {
+    margin-top: 10px;
+  }
 `;
 export default Root;
