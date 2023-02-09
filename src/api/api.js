@@ -2,7 +2,7 @@ import axios from "axios";
 import auth from "./auth";
 
 export const api = axios.create({
-  baseURL: "https://pre-onboarding-selection-task.shop",
+  baseURL: process.env.REACT_APP_API_URL,
   headers: {
     Authorization: `Bearer ${auth.getToken()}`,
     "Content-Type": "application/json",

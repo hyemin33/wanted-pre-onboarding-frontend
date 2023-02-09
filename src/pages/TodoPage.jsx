@@ -31,7 +31,7 @@ const TodoPage = () => {
     await api
       .post("/todos", { todo: addTodo })
       .then((res) => {
-        console.log("성공");
+        setAddTodo("");
         getData();
       })
       .catch((err) => {
