@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { api } from "../api/api";
+
 import Input from "../components/Input";
 import Button from "../components/Button";
 import ServiceWrapper from "../components/layout/ServiceWrapper";
+import auth from "../api/auth";
 
 const SigninPage = () => {
   const navigate = useNavigate();
@@ -12,14 +15,16 @@ const SigninPage = () => {
   const [password, setPassword] = useState("");
 
   //로그인 검증
-  const handleLogin = () => {
-    if (!email.includes("@")) {
-      window.alert("이메일에 @를 포함하여 입력해주세요.");
-    } else if (password.length < 8) {
-      window.alert("비밀번호를 8자이상 입력해주세요.");
-    } else {
-      navigate("/todo");
-    }
+  const handleLogin = async () => {
+    await api
+      .post("/auth/signin", { email, password })
+      .then((res) => {
+        auth.setToken(res.data.access_token);
+        navigate("/todo");
+      })
+      .catch((err) => {
+        window.alert(err.response.data.message);
+      });
   };
 
   return (
