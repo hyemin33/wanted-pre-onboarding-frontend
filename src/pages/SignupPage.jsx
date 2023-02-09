@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { api } from "../api/api";
+import auth from "../api/auth";
 
 import Input from "../components/Input";
 import Button from "../components/Button";
 import ServiceWrapper from "../components/layout/ServiceWrapper";
-import auth from "../api/auth";
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -14,9 +14,19 @@ const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //email 유효성검사
+  const emailRegExp = /@/;
+
+  //토큰있으면 todo로 리다이렉트
+  useEffect(() => {
+    if (auth.getToken()) {
+      navigate("/todo");
+    }
+  }, []);
+
   //회원가입 검증
   const handleSubmit = async () => {
-    if (!email.includes("@")) {
+    if (!emailRegExp.test(email)) {
       window.alert("이메일에 @를 포함하여 입력해주세요.");
     } else if (password.length < 8) {
       window.alert("비밀번호를 8자이상 입력해주세요.");
@@ -24,7 +34,6 @@ const SignupPage = () => {
       await api
         .post("/auth/signup", { email, password })
         .then((res) => {
-          auth.getToken(res.data.access_token);
           navigate("/signin");
         })
         .catch((err) => {
@@ -56,7 +65,9 @@ const SignupPage = () => {
       <Button
         data-testid="signup-button"
         text="회원가입"
-        disabled={!email || !password}
+        disabled={
+          !email || !password || password.length < 8 || !emailRegExp.test(email)
+        }
         onClick={handleSubmit}
       />
     </ServiceWrapper>

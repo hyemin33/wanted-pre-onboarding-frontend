@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { api } from "../api/api";
+import auth from "../api/auth";
 
 import Input from "../components/Input";
 import Button from "../components/Button";
 import ServiceWrapper from "../components/layout/ServiceWrapper";
-import auth from "../api/auth";
 
 const SigninPage = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  //email 유효성검사
+  const emailRegExp = /@/;
+
+  //토큰있으면 todo로 리다이렉트
+  useEffect(() => {
+    if (auth.getToken()) {
+      navigate("/todo");
+    }
+  }, []);
 
   //로그인 검증
   const handleLogin = async () => {
@@ -50,7 +60,9 @@ const SigninPage = () => {
       <Button
         data-testid="signin-button"
         text="로그인"
-        disabled={!email || !password}
+        disabled={
+          !email || !password || password.length < 8 || !emailRegExp.test(email)
+        }
         onClick={handleLogin}
       />
     </ServiceWrapper>
