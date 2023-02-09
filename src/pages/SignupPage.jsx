@@ -1,7 +1,8 @@
 import React from "react";
+import ServiceWrapper from "../components/layout/ServiceWrapper";
 
 const SignypPage = () => {
-  return <div>회원가입</div>;
+  return <ServiceWrapper>회원가입</ServiceWrapper>;
 };
 
 export default SignypPage;
