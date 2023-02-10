@@ -70,9 +70,11 @@ const TodoPage = () => {
 
       <h3>Todo 수정/삭제</h3>
       {todoList?.length > 0 ? (
-        todoList?.map((item, i) => (
-          <TodoItem item={item} key={`todo_list` + i} mutate={getData} />
-        ))
+        <ul>
+          {todoList?.map((item, i) => (
+            <TodoItem item={item} key={`todo_list` + i} mutate={getData} />
+          ))}
+        </ul>
       ) : (
         <EmptyText>
           <p>
