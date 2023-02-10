@@ -15,10 +15,7 @@
 ![ezgif com-video-to-gif (4)](https://user-images.githubusercontent.com/124856203/218042107-2f4eadb1-9352-4def-8bea-3ebe6810f570.gif)
 
 #
-#
-#
-#
-#
+
 
 2) todo 리스트
 - 투두 리스트 목록 보기
@@ -28,12 +25,18 @@
 
 
 #
-#
-#
+
 - 투두 수정 버튼 클릭시 '제출','취소' 버튼 기능
 - 제출시 입력한 투두 내용 수정, 취소시 입력한 투두 내용 초기화 후 수정 비활성화
 - 투두 삭제 기능
 
 ![ezgif com-video-to-gif (3)](https://user-images.githubusercontent.com/124856203/218039613-86c13800-6cea-4b8c-a2de-44a085fa333a.gif)
+
+
+#
+- 토큰 있을때 /signin, s/ignup 페이지 접근시 /todo페이지로 이동
+
+
+![ezgif com-video-to-gif (5)](https://user-images.githubusercontent.com/124856203/218043936-f6e7baf2-1700-4f6b-a96f-7c3e86f3885e.gif)
 
 
