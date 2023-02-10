@@ -12,12 +12,13 @@
 - 유효성 통과가 안된다면 버튼에 disabled 
 - 회원가입 후 /signin 페이지로 이동
 - 로그인 후 로컬스토리지에 토큰 저장 후 /todo 페이지 이동
+![ezgif com-video-to-gif (4)](https://user-images.githubusercontent.com/124856203/218042107-2f4eadb1-9352-4def-8bea-3ebe6810f570.gif)
 
-![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/124856203/218037533-69ad5d4c-6dec-4872-b311-4a9bb19e45fe.gif)
-
-
-
-
+#
+#
+#
+#
+#
 
 2) todo 리스트
 - 투두 리스트 목록 보기
@@ -26,7 +27,9 @@
 ![ezgif com-video-to-gif (2)](https://user-images.githubusercontent.com/124856203/218038894-2bc6343b-661b-45e2-8f13-5409af594d4b.gif)
 
 
-
+#
+#
+#
 - 투두 수정 버튼 클릭시 '제출','취소' 버튼 기능
 - 제출시 입력한 투두 내용 수정, 취소시 입력한 투두 내용 초기화 후 수정 비활성화
 - 투두 삭제 기능
