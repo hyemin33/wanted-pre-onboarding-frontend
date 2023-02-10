@@ -52,7 +52,6 @@ const TodoPage = () => {
 
   return (
     <ServiceWrapper>
-   
       <h3>Todo 추가</h3>
       <Input
         data-testid="new-todo-input"
@@ -70,13 +69,33 @@ const TodoPage = () => {
       <Hr />
 
       <h3>Todo 수정/삭제</h3>
-      {todoList?.map((item, i) => (
-        <TodoItem item={item} key={`todo_list` + i} mutate={getData} />
-      ))}
+      {todoList?.length > 0 ? (
+        todoList?.map((item, i) => (
+          <TodoItem item={item} key={`todo_list` + i} mutate={getData} />
+        ))
+      ) : (
+        <EmptyText>
+          <p>
+            Todo가 없습니다.
+            <br />
+            Todo를 추가해주세요.
+          </p>
+        </EmptyText>
+      )}
     </ServiceWrapper>
   );
 };
 
+const EmptyText = styled.div`
+  padding: 20px 0;
+  & > p {
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    color: #5f5f5f;
+    font-weight: 500;
+  }
+`;
 const Hr = styled.div`
   margin: 40px 0;
   border: 1px solid #ddd;

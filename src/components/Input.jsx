@@ -13,11 +13,11 @@ const Input = ({ label, isPw = false, ...props }) => {
 const StyledInput = styled.input`
   width: auto;
   font-size: 14px;
-  background: #fff
+  background: #fff;
   outline: 0;
   border: 1px solid #bdbdbd;
-  border-radius:4px;
-  padding:10px 5px;
+  border-radius: 4px;
+  padding: 10px 5px;
 
   &::placeholder {
     color: #bdbdbd;

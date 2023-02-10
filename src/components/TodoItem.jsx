@@ -17,10 +17,9 @@ const TodoItem = ({ item, mutate }) => {
     await api
       .put(`/todos/${item.id}`, {
         todo: isEdit ? changeTodo.todo : item?.todo,
-        isCompleted:isEdit? item.isCompleted:value,
+        isCompleted: isEdit ? item.isCompleted : value,
       })
       .then((res) => {
-        console.log("성공");
         mutate();
         setIsEdit(false);
       })
@@ -34,7 +33,6 @@ const TodoItem = ({ item, mutate }) => {
     await api
       .delete(`/todos/${item.id}`)
       .then((res) => {
-        console.log("성공");
         mutate();
       })
       .catch((err) => {
@@ -44,7 +42,6 @@ const TodoItem = ({ item, mutate }) => {
 
   return (
     <TodoItemArea>
-      
       {isEdit ? ( //수정모드
         <>
           <Input
@@ -54,54 +51,61 @@ const TodoItem = ({ item, mutate }) => {
               setChangeTodo({ ...changeTodo, todo: e.target.value });
             }}
           />
-          <Button
-            className="update"
-            data-testid="submit-button"
-            text="제출"
-            onClick={handleTodo}
-          />
-          <Button
-            className="delete"
-            data-testid="cancel-button"
-            text="취소"
-            onClick={() => {
-              setIsEdit(false);
-            }}
-          />
+          <ButtonArea>
+            <Button
+              className="update"
+              data-testid="submit-button"
+              text="제출"
+              onClick={handleTodo}
+            />
+            <Button
+              className="delete"
+              data-testid="cancel-button"
+              text="취소"
+              onClick={() => {
+                setIsEdit(false);
+              }}
+            />
+          </ButtonArea>
         </>
       ) : (
         <>
           <CheckBox
             type="checkbox"
             checked={item.isCompleted}
-            onChange={(e)=>handleTodo(e.target.checked)}
+            onChange={(e) => handleTodo(e.target.checked)}
           />
           <TodoText>{item.todo}</TodoText>
-          <Button
-            className="update"
-            data-testid="modify-button"
-            text="수정"
-            onClick={() => {
-              setIsEdit(true);
-              setChangeTodo({ ...changeTodo, todo: item?.todo });
-            }}
-          />
-          <Button
-            className="delete"
-            data-testid="delete-button"
-            text="삭제"
-            onClick={handleDelete}
-          />
+          <ButtonArea>
+            <Button
+              className="update"
+              data-testid="modify-button"
+              text="수정"
+              onClick={() => {
+                setIsEdit(true);
+                setChangeTodo({ ...changeTodo, todo: item?.todo });
+              }}
+            />
+            <Button
+              className="delete"
+              data-testid="delete-button"
+              text="삭제"
+              onClick={handleDelete}
+            />
+          </ButtonArea>
         </>
       )}
     </TodoItemArea>
   );
 };
-
-
+const ButtonArea = styled.div`
+  display: flex;
+  width: 170px;
+`;
 const CheckBox = styled.input`
-  margin-bottom:20px;
-`
+  margin-bottom: 20px;
+  cursor: pointer;
+`;
 const TodoText = styled.p`
   font-size: 14px;
   margin-bottom: 20px;
