@@ -13,11 +13,11 @@ const TodoItem = ({ item, mutate }) => {
   const [isEdit, setIsEdit] = useState(false);
 
   //todo 수정하기
-  const handleTodo = async (type, completedValue) => {
+  const handleTodo = async (value) => {
     await api
       .put(`/todos/${item.id}`, {
         todo: isEdit ? changeTodo.todo : item?.todo,
-        isCompleted: type === "check" ? completedValue : changeTodo.isCompleted,
+        isCompleted:isEdit? item.isCompleted:value,
       })
       .then((res) => {
         console.log("성공");
@@ -44,11 +44,7 @@ const TodoItem = ({ item, mutate }) => {
 
   return (
     <TodoItemArea>
-      <CheckBox
-        type="checkbox"
-        checked={item.isCompleted}
-        onChange={(e) => handleTodo("check", e.target.checked)}
-      />
+      
       {isEdit ? ( //수정모드
         <>
           <Input
@@ -75,6 +71,11 @@ const TodoItem = ({ item, mutate }) => {
         </>
       ) : (
         <>
+          <CheckBox
+            type="checkbox"
+            checked={item.isCompleted}
+            onChange={(e)=>handleTodo(e.target.checked)}
+          />
           <TodoText>{item.todo}</TodoText>
           <Button
             className="update"
