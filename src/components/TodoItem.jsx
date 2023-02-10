@@ -44,7 +44,7 @@ const TodoItem = ({ item, mutate }) => {
 
   return (
     <TodoItemArea>
-      <input
+      <CheckBox
         type="checkbox"
         checked={item.isCompleted}
         onChange={(e) => handleTodo("check", e.target.checked)}
@@ -97,6 +97,10 @@ const TodoItem = ({ item, mutate }) => {
   );
 };
 
+
+const CheckBox = styled.input`
+  margin-bottom:20px;
+`
 const TodoText = styled.p`
   font-size: 14px;
   margin-bottom: 20px;
