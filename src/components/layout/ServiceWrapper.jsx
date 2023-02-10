@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import auth from "../../api/auth";
 
 const ServiceWrapper = ({ children }) => {
   return (
@@ -8,11 +7,6 @@ const ServiceWrapper = ({ children }) => {
       <WrapperContainer>
         <Header>
           <h2>Pre Onboarding Frontend</h2>
-          {auth.getToken() && (
-            <button type="button" onClick={() => auth.clearAll()}>
-              로그아웃
-            </button>
-          )}
         </Header>
         <Body>{children}</Body>
         <Footer>
@@ -50,15 +44,7 @@ const Header = styled.div`
     color: #8f47e6;
   }
 
-  & > button {
-    border: none;
-    background: none;
-    position: absolute;
-    font-weight: bold;
-    right: 80px;
-    text-decoration: underline;
-    cursor: pointer;
-  }
+
 `;
 
 const Body = styled.div`

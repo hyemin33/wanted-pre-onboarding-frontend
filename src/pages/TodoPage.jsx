@@ -52,6 +52,7 @@ const TodoPage = () => {
 
   return (
     <ServiceWrapper>
+   
       <h3>Todo 추가</h3>
       <Input
         data-testid="new-todo-input"
